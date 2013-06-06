@@ -1,0 +1,23 @@
+#==============================
+
+SOURCES =			Vector3.cpp
+SOURCE_DIR =		include/
+
+#==
+
+CC =			g++
+CFLAGS =		-c
+LDFLAGS =
+#==
+
+OBJECT_DIR =		obj/
+OBJECTS =			$(notdir $(SOURCES:.cpp=.o))
+SOURCE_FULL =		$(addprefix $(SOURCE_DIR),$(SOURCES))
+OBJECT_FULL =		$(addprefix $(OBJECT_DIR),$(OBJECTS))
+#==============================
+
+
+all: $(OBJECT_FULL)
+
+$(OBJECT_DIR)%.o: $(SOURCE_DIR)%.cpp
+	$(CC) $(CFLAGS) -o $@ $<

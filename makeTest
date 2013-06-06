@@ -1,0 +1,29 @@
+#==============================
+
+SOURCES =			main.cpp
+EXECUTABLE =		test
+SOURCE_DIR =		test/
+EXECUTABLE_DIR =	bin/
+
+#==
+
+CC =			g++
+CFLAGS =		-c
+LDFLAGS =
+#==
+
+OBJECT_DIR =		obj/
+OBJECTS =			$(notdir $(SOURCES:.cpp=.o))
+SOURCE_FULL =		$(addprefix $(SOURCE_DIR),$(SOURCES))
+OBJECT_FULL =		$(addprefix $(OBJECT_DIR),$(OBJECTS))
+EXECUTABLE_FULL =	$(EXECUTABLE_DIR)$(EXECUTABLE)
+#==============================
+
+
+all: $(SOURCE_FULL) $(EXECUTABLE_FULL)
+	
+$(EXECUTABLE_FULL): $(OBJECT_FULL)
+	$(CC) $(LDFLAGS) -o $@ $^
+
+$(OBJECT_DIR)%.o: $(SOURCE_DIR)%.cpp
+	$(CC) $(CFLAGS) -o $@ $<
