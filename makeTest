@@ -1,6 +1,6 @@
 #==============================
 
-SOURCES =			main.cpp
+SOURCES =			main.cpp ../Include/Vector3.cpp
 EXECUTABLE =		test
 SOURCE_DIR =		test/
 EXECUTABLE_DIR =	bin/
@@ -26,4 +26,4 @@ $(EXECUTABLE_FULL): $(OBJECT_FULL)
 	$(CC) $(LDFLAGS) -o $@ $^
 
 $(OBJECT_DIR)%.o: $(SOURCE_DIR)%.cpp
-	$(CC) $(CFLAGS) -o $@ $<
+	$(CC) $(CFLAGS) -o $@ $^
